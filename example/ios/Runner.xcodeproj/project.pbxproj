@@ -15,6 +15,27 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		AA96462E2578E5B600057CA0 /* PMLogUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646032578E5B600057CA0 /* PMLogUtils.m */; };
+		AA96462F2578E5B600057CA0 /* ImageScannerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646052578E5B600057CA0 /* ImageScannerPlugin.m */; };
+		AA9646302578E5B600057CA0 /* PHAsset+PHAsset_checkType.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646062578E5B600057CA0 /* PHAsset+PHAsset_checkType.m */; };
+		AA9646312578E5B600057CA0 /* PMConvertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646092578E5B600057CA0 /* PMConvertUtils.m */; };
+		AA9646322578E5B600057CA0 /* PHAsset+PHAsset_getTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96460B2578E5B600057CA0 /* PHAsset+PHAsset_getTitle.m */; };
+		AA9646332578E5B600057CA0 /* PMNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96460C2578E5B600057CA0 /* PMNotificationManager.m */; };
+		AA9646342578E5B600057CA0 /* ResultHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96460E2578E5B600057CA0 /* ResultHandler.m */; };
+		AA9646352578E5B600057CA0 /* NSString+PM_COMMON.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646102578E5B600057CA0 /* NSString+PM_COMMON.m */; };
+		AA9646362578E5B600057CA0 /* PMCacheContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646122578E5B600057CA0 /* PMCacheContainer.m */; };
+		AA9646372578E5B600057CA0 /* PMFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646132578E5B600057CA0 /* PMFileHelper.m */; };
+		AA9646382578E5B600057CA0 /* PMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646142578E5B600057CA0 /* PMManager.m */; };
+		AA9646392578E5B600057CA0 /* PMAssetPathEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646162578E5B600057CA0 /* PMAssetPathEntity.m */; };
+		AA96463A2578E5B600057CA0 /* PMFilterOption.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646182578E5B600057CA0 /* PMFilterOption.m */; };
+		AA96463B2578E5B600057CA0 /* PMThumbLoadOption.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96461A2578E5B600057CA0 /* PMThumbLoadOption.m */; };
+		AA96463C2578E5B600057CA0 /* PMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96461E2578E5B600057CA0 /* PMPlugin.m */; };
+		AA96463D2578E5B600057CA0 /* PMRequestTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646222578E5B600057CA0 /* PMRequestTypeUtils.m */; };
+		AA96463E2578E5B600057CA0 /* PMFolderUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646242578E5B600057CA0 /* PMFolderUtils.m */; };
+		AA96463F2578E5B600057CA0 /* PhotoChangeObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646252578E5B600057CA0 /* PhotoChangeObserver.m */; };
+		AA9646402578E5B600057CA0 /* AssetEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9646272578E5B600057CA0 /* AssetEntity.m */; };
+		AA9646412578E5B600057CA0 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96462A2578E5B600057CA0 /* Reply.m */; };
+		AA9646422578E5B600057CA0 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96462D2578E5B600057CA0 /* MD5Utils.m */; };
 		F0B5BD03C11EA152D8598A3A /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8458811B3315A4174E78EE /* libPods-Runner.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +70,48 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA9646032578E5B600057CA0 /* PMLogUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLogUtils.m; sourceTree = "<group>"; };
+		AA9646042578E5B600057CA0 /* Reply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
+		AA9646052578E5B600057CA0 /* ImageScannerPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScannerPlugin.m; sourceTree = "<group>"; };
+		AA9646062578E5B600057CA0 /* PHAsset+PHAsset_checkType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+PHAsset_checkType.m"; sourceTree = "<group>"; };
+		AA9646072578E5B600057CA0 /* AssetEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetEntity.h; sourceTree = "<group>"; };
+		AA9646092578E5B600057CA0 /* PMConvertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMConvertUtils.m; sourceTree = "<group>"; };
+		AA96460A2578E5B600057CA0 /* PMThumbLoadOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMThumbLoadOption.h; sourceTree = "<group>"; };
+		AA96460B2578E5B600057CA0 /* PHAsset+PHAsset_getTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+PHAsset_getTitle.m"; sourceTree = "<group>"; };
+		AA96460C2578E5B600057CA0 /* PMNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMNotificationManager.m; sourceTree = "<group>"; };
+		AA96460D2578E5B600057CA0 /* PMFilterOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFilterOption.h; sourceTree = "<group>"; };
+		AA96460E2578E5B600057CA0 /* ResultHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultHandler.m; sourceTree = "<group>"; };
+		AA96460F2578E5B600057CA0 /* PMPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlugin.h; sourceTree = "<group>"; };
+		AA9646102578E5B600057CA0 /* NSString+PM_COMMON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PM_COMMON.m"; sourceTree = "<group>"; };
+		AA9646112578E5B600057CA0 /* PMFolderUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFolderUtils.h; sourceTree = "<group>"; };
+		AA9646122578E5B600057CA0 /* PMCacheContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCacheContainer.m; sourceTree = "<group>"; };
+		AA9646132578E5B600057CA0 /* PMFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFileHelper.m; sourceTree = "<group>"; };
+		AA9646142578E5B600057CA0 /* PMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMManager.m; sourceTree = "<group>"; };
+		AA9646152578E5B600057CA0 /* PMRequestTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRequestTypeUtils.h; sourceTree = "<group>"; };
+		AA9646162578E5B600057CA0 /* PMAssetPathEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAssetPathEntity.m; sourceTree = "<group>"; };
+		AA9646172578E5B600057CA0 /* PMConvertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMConvertUtils.h; sourceTree = "<group>"; };
+		AA9646182578E5B600057CA0 /* PMFilterOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFilterOption.m; sourceTree = "<group>"; };
+		AA9646192578E5B600057CA0 /* PMNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMNotificationManager.h; sourceTree = "<group>"; };
+		AA96461A2578E5B600057CA0 /* PMThumbLoadOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMThumbLoadOption.m; sourceTree = "<group>"; };
+		AA96461B2578E5B600057CA0 /* PHAsset+PHAsset_getTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+PHAsset_getTitle.h"; sourceTree = "<group>"; };
+		AA96461C2578E5B600057CA0 /* NSString+PM_COMMON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PM_COMMON.h"; sourceTree = "<group>"; };
+		AA96461D2578E5B600057CA0 /* ResultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultHandler.h; sourceTree = "<group>"; };
+		AA96461E2578E5B600057CA0 /* PMPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlugin.m; sourceTree = "<group>"; };
+		AA96461F2578E5B600057CA0 /* PMAssetPathEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAssetPathEntity.h; sourceTree = "<group>"; };
+		AA9646202578E5B600057CA0 /* PMFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFileHelper.h; sourceTree = "<group>"; };
+		AA9646212578E5B600057CA0 /* PMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMManager.h; sourceTree = "<group>"; };
+		AA9646222578E5B600057CA0 /* PMRequestTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRequestTypeUtils.m; sourceTree = "<group>"; };
+		AA9646232578E5B600057CA0 /* PMCacheContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCacheContainer.h; sourceTree = "<group>"; };
+		AA9646242578E5B600057CA0 /* PMFolderUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFolderUtils.m; sourceTree = "<group>"; };
+		AA9646252578E5B600057CA0 /* PhotoChangeObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoChangeObserver.m; sourceTree = "<group>"; };
+		AA9646262578E5B600057CA0 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
+		AA9646272578E5B600057CA0 /* AssetEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetEntity.m; sourceTree = "<group>"; };
+		AA9646282578E5B600057CA0 /* ImageScannerPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScannerPlugin.h; sourceTree = "<group>"; };
+		AA9646292578E5B600057CA0 /* PHAsset+PHAsset_checkType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+PHAsset_checkType.h"; sourceTree = "<group>"; };
+		AA96462A2578E5B600057CA0 /* Reply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
+		AA96462B2578E5B600057CA0 /* PMLogUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLogUtils.h; sourceTree = "<group>"; };
+		AA96462C2578E5B600057CA0 /* PhotoChangeObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoChangeObserver.h; sourceTree = "<group>"; };
+		AA96462D2578E5B600057CA0 /* MD5Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Utils.m; sourceTree = "<group>"; };
 		AEFBECD84FCEBA83C6F5BC7A /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		DCAB371B29DC507A5F63492B /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +159,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				AA9646022578E5B600057CA0 /* Classes */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -134,6 +198,64 @@
 				97C146F21CF9000F007C117D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA9646022578E5B600057CA0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AA9646072578E5B600057CA0 /* AssetEntity.h */,
+				AA9646272578E5B600057CA0 /* AssetEntity.m */,
+				AA9646082578E5B600057CA0 /* core */,
+				AA9646282578E5B600057CA0 /* ImageScannerPlugin.h */,
+				AA9646052578E5B600057CA0 /* ImageScannerPlugin.m */,
+				AA9646262578E5B600057CA0 /* MD5Utils.h */,
+				AA96462D2578E5B600057CA0 /* MD5Utils.m */,
+				AA9646292578E5B600057CA0 /* PHAsset+PHAsset_checkType.h */,
+				AA9646062578E5B600057CA0 /* PHAsset+PHAsset_checkType.m */,
+				AA96462C2578E5B600057CA0 /* PhotoChangeObserver.h */,
+				AA9646252578E5B600057CA0 /* PhotoChangeObserver.m */,
+				AA96462B2578E5B600057CA0 /* PMLogUtils.h */,
+				AA9646032578E5B600057CA0 /* PMLogUtils.m */,
+				AA9646042578E5B600057CA0 /* Reply.h */,
+				AA96462A2578E5B600057CA0 /* Reply.m */,
+			);
+			name = Classes;
+			path = ../../ios/Classes;
+			sourceTree = "<group>";
+		};
+		AA9646082578E5B600057CA0 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				AA96461C2578E5B600057CA0 /* NSString+PM_COMMON.h */,
+				AA9646102578E5B600057CA0 /* NSString+PM_COMMON.m */,
+				AA96461B2578E5B600057CA0 /* PHAsset+PHAsset_getTitle.h */,
+				AA96460B2578E5B600057CA0 /* PHAsset+PHAsset_getTitle.m */,
+				AA96461F2578E5B600057CA0 /* PMAssetPathEntity.h */,
+				AA9646162578E5B600057CA0 /* PMAssetPathEntity.m */,
+				AA9646232578E5B600057CA0 /* PMCacheContainer.h */,
+				AA9646122578E5B600057CA0 /* PMCacheContainer.m */,
+				AA9646172578E5B600057CA0 /* PMConvertUtils.h */,
+				AA9646092578E5B600057CA0 /* PMConvertUtils.m */,
+				AA9646202578E5B600057CA0 /* PMFileHelper.h */,
+				AA9646132578E5B600057CA0 /* PMFileHelper.m */,
+				AA96460D2578E5B600057CA0 /* PMFilterOption.h */,
+				AA9646182578E5B600057CA0 /* PMFilterOption.m */,
+				AA9646112578E5B600057CA0 /* PMFolderUtils.h */,
+				AA9646242578E5B600057CA0 /* PMFolderUtils.m */,
+				AA9646212578E5B600057CA0 /* PMManager.h */,
+				AA9646142578E5B600057CA0 /* PMManager.m */,
+				AA9646192578E5B600057CA0 /* PMNotificationManager.h */,
+				AA96460C2578E5B600057CA0 /* PMNotificationManager.m */,
+				AA96460F2578E5B600057CA0 /* PMPlugin.h */,
+				AA96461E2578E5B600057CA0 /* PMPlugin.m */,
+				AA9646152578E5B600057CA0 /* PMRequestTypeUtils.h */,
+				AA9646222578E5B600057CA0 /* PMRequestTypeUtils.m */,
+				AA96460A2578E5B600057CA0 /* PMThumbLoadOption.h */,
+				AA96461A2578E5B600057CA0 /* PMThumbLoadOption.m */,
+				AA96461D2578E5B600057CA0 /* ResultHandler.h */,
+				AA96460E2578E5B600057CA0 /* ResultHandler.m */,
+			);
+			path = core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +402,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA96462F2578E5B600057CA0 /* ImageScannerPlugin.m in Sources */,
+				AA9646342578E5B600057CA0 /* ResultHandler.m in Sources */,
+				AA9646322578E5B600057CA0 /* PHAsset+PHAsset_getTitle.m in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
+				AA9646422578E5B600057CA0 /* MD5Utils.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
+				AA9646352578E5B600057CA0 /* NSString+PM_COMMON.m in Sources */,
+				AA9646312578E5B600057CA0 /* PMConvertUtils.m in Sources */,
+				AA96463A2578E5B600057CA0 /* PMFilterOption.m in Sources */,
+				AA9646332578E5B600057CA0 /* PMNotificationManager.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				AA9646362578E5B600057CA0 /* PMCacheContainer.m in Sources */,
+				AA9646302578E5B600057CA0 /* PHAsset+PHAsset_checkType.m in Sources */,
+				AA96463E2578E5B600057CA0 /* PMFolderUtils.m in Sources */,
+				AA9646372578E5B600057CA0 /* PMFileHelper.m in Sources */,
+				AA96463C2578E5B600057CA0 /* PMPlugin.m in Sources */,
+				AA96463D2578E5B600057CA0 /* PMRequestTypeUtils.m in Sources */,
+				AA96463F2578E5B600057CA0 /* PhotoChangeObserver.m in Sources */,
+				AA9646382578E5B600057CA0 /* PMManager.m in Sources */,
+				AA96462E2578E5B600057CA0 /* PMLogUtils.m in Sources */,
+				AA9646402578E5B600057CA0 /* AssetEntity.m in Sources */,
+				AA9646392578E5B600057CA0 /* PMAssetPathEntity.m in Sources */,
+				AA9646412578E5B600057CA0 /* Reply.m in Sources */,
+				AA96463B2578E5B600057CA0 /* PMThumbLoadOption.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
