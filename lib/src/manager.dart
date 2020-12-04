@@ -299,4 +299,14 @@ class PhotoManager {
   static Future<int> getAssetLength({String assetId}) {
     return _plugin.getAssetLength(assetId: assetId);
   }
+
+  static Future<double> calculateAssetSimilarity({
+    String assetIdA,
+    String assetIdB,
+  }) {
+    return _plugin.calculateAssetSimilarity(
+      assetIdA: assetIdA,
+      assetIdB: assetIdB,
+    );
+  }
 }

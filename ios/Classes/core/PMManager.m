@@ -15,6 +15,7 @@
 #import "PMFolderUtils.h"
 #import "MD5Utils.h"
 #import "PMThumbLoadOption.h"
+#import "../util/ImageSimilarity.h"
 
 @implementation PMManager {
   BOOL __isAuth;
@@ -1248,6 +1249,35 @@
     PHAssetResource *resource = [PHAssetResource assetResourcesForAsset:asset].firstObject;
     NSNumber *fileSize = [resource valueForKey:@"fileSize"];
     return [fileSize longLongValue];
+}
+
+- (void)calculateAssetSimilarity:(NSString *)assetIdA assetIdB:(NSString *)assetIdB resultHandler:(ResultHandler *)handler  {
+    PMThumbLoadOption *option = [PMThumbLoadOption optionDict:@{
+        @"width": @(50),
+        @"height": @(50),
+        @"format": @(0),
+        @"quality": @(100),
+        @"deliveryMode": @(2),
+        @"resizeMode": @(1),
+    }];
+    [self getThumbWithId:assetIdA option:option resultHandler:[ResultHandler handlerWithResult:^(id  _Nullable resultA) {
+        if (!resultA) {
+            handler.result(@(0));
+            return;
+        }
+        [self getThumbWithId:assetIdB option:option resultHandler:[ResultHandler handlerWithResult:^(id  _Nullable resultB) {
+            if (!resultB) {
+                handler.result(@(0));
+                return;
+            }
+            FlutterStandardTypedData *dataA = (FlutterStandardTypedData *)resultA;
+            FlutterStandardTypedData *dataB = (FlutterStandardTypedData *)resultB;
+            UIImage *imageA = [[UIImage alloc] initWithData:dataA.data scale:1.f];
+            UIImage *imageB = [[UIImage alloc] initWithData:dataB.data scale:1.f];
+            double similarity = [ImageSimilarity imageSimilarityValueWithImgA:imageA ImgB:imageB];
+            handler.result(@(similarity));
+        }]];
+    }]];
 }
 
 #pragma mark cache thumb

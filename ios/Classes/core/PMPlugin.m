@@ -340,6 +340,10 @@
           NSString *ID = call.arguments[@"assetId"];
           long long length = [manager getAssetLength:ID];
           [handler reply:@(length)];
+      } else if ([@"calculateAssetSimilarity" isEqualToString:call.method]) {
+          NSString *IDA = call.arguments[@"assetIdA"];
+          NSString *IDB = call.arguments[@"assetIdB"];
+          [manager calculateAssetSimilarity:IDA assetIdB:IDB resultHandler:handler];
       } else {
           [handler notImplemented];
           

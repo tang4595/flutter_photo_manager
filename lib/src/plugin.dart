@@ -444,6 +444,19 @@ mixin IosPlugin on BasePlugin {
       return value;
     });
   }
+
+  Future<double> calculateAssetSimilarity({
+    String assetIdA,
+    String assetIdB,
+  }) {
+    return _channel.invokeMethod("calculateAssetSimilarity", {
+      "assetIdA": assetIdA,
+      "assetIdB": assetIdB,
+    }).then((value) {
+      if (value == null) return 0;
+      return value;
+    });
+  }
 }
 
 mixin AndroidPlugin on BasePlugin {

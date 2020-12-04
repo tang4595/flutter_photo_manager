@@ -81,6 +81,8 @@ typedef void (^AssetResult)(PMAssetEntity *);
 
 - (long long)getAssetLength:(NSString *)assetId;
 
+- (void)calculateAssetSimilarity:(NSString *)assetIdA assetIdB:(NSString *)assetIdB resultHandler:(ResultHandler *)handler;
+
 - (void)requestCacheAssetsThumb:(NSArray *)identifiers option:(PMThumbLoadOption *)option;
 
 - (void)cancelCacheRequests;
