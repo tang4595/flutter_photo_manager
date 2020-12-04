@@ -295,4 +295,8 @@ class PhotoManager {
 
     return src;
   }
+
+  static Future<int> getAssetLength({String assetId}) {
+    return _plugin.getAssetLength(assetId: assetId);
+  }
 }

@@ -1242,6 +1242,14 @@
   NSLog(@"remove cache file %@, error: %@", videoPath, err);
 }
 
+- (long long)getAssetLength:(NSString *)assetId {
+    PHAsset *asset = [PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].firstObject;
+    if (!asset) return 0;
+    PHAssetResource *resource = [PHAssetResource assetResourcesForAsset:asset].firstObject;
+    NSNumber *fileSize = [resource valueForKey:@"fileSize"];
+    return [fileSize longLongValue];
+}
+
 #pragma mark cache thumb
 
 - (void)requestCacheAssetsThumb:(NSArray *)identifiers option:(PMThumbLoadOption *)option {

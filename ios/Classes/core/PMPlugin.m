@@ -336,8 +336,13 @@
       } else if ([@"cancelCacheRequests" isEqualToString:call.method]) {
         [manager cancelCacheRequests];
         [handler reply:@YES];
+      } else if ([@"getAssetLength" isEqualToString:call.method]) {
+          NSString *ID = call.arguments[@"assetId"];
+          long long length = [manager getAssetLength:ID];
+          [handler reply:@(length)];
       } else {
-        [handler notImplemented];
+          [handler notImplemented];
+          
       }
   }];
 

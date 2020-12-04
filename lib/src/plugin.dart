@@ -433,6 +433,17 @@ mixin IosPlugin on BasePlugin {
 
     return true;
   }
+
+  Future<int> getAssetLength({
+    String assetId,
+  }) async {
+    return _channel.invokeMethod("getAssetLength", {
+      "assetId": assetId,
+    }).then((value) {
+      if (value == null) return 0;
+      return value;
+    });
+  }
 }
 
 mixin AndroidPlugin on BasePlugin {

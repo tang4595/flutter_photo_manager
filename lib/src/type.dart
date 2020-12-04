@@ -17,6 +17,36 @@ enum AssetType {
   audio,
 }
 
+/// Only iOS.
+enum AssetSubtype {
+  /// PHAssetMediaSubtypeNone.
+  none,
+
+  /// PHAssetMediaSubtypePhotoPanorama.
+  photoPanorama,
+
+  /// PHAssetMediaSubtypePhotoHDR.
+  photoHDR,
+
+  /// PHAssetMediaSubtypePhotoScreenshot.
+  photoScreenshot,
+
+  /// PHAssetMediaSubtypePhotoLive.
+  photoLive,
+
+  /// PHAssetMediaSubtypePhotoDepthEffect.
+  photoDepthEffect,
+
+  /// PHAssetMediaSubtypeVideoStreamed.
+  videoStreamed,
+
+  /// PHAssetMediaSubtypeVideoHighFrameRate.
+  videoHighFrameRate,
+
+  /// PHAssetMediaSubtypeVideoTimelapse.
+  videoTimelapse,
+}
+
 class RequestType {
   final int value;
 

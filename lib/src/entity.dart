@@ -209,6 +209,39 @@ class AssetEntity {
   /// see [type]
   int typeInt;
 
+  /// the asset type
+  ///
+  /// see [AssetType]
+  AssetSubtype get subtype {
+    switch (subTypeInt) {
+      case 0:
+        return AssetSubtype.none;
+      case 1:
+        return AssetSubtype.photoPanorama;
+      case 2:
+        return AssetSubtype.photoHDR;
+      case 3:
+        return AssetSubtype.photoScreenshot;
+      case 4:
+        return AssetSubtype.photoLive;
+      case 5:
+        return AssetSubtype.photoDepthEffect;
+      case 6:
+        return AssetSubtype.videoStreamed;
+      case 7:
+        return AssetSubtype.videoHighFrameRate;
+      case 8:
+        return AssetSubtype.videoTimelapse;
+      default:
+        return AssetSubtype.none;
+    }
+  }
+
+  /// Asset subtype int value.
+  ///
+  /// see [subType]
+  int subTypeInt;
+
   /// Duration of video, unit is second.
   ///
   /// If [type] is [AssetType.image], then it's value is 0.

@@ -79,6 +79,8 @@ typedef void (^AssetResult)(PMAssetEntity *);
 
 - (void)clearFileCache;
 
+- (long long)getAssetLength:(NSString *)assetId;
+
 - (void)requestCacheAssetsThumb:(NSArray *)identifiers option:(PMThumbLoadOption *)option;
 
 - (void)cancelCacheRequests;
