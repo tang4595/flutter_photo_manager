@@ -848,25 +848,21 @@
              desc:(NSString *)desc
             block:(AssetResult)block {
   [PMLogUtils.sharedInstance info:[NSString stringWithFormat:@"save video with path: %@, title: %@, desc %@", path, title, desc]];
-  NSURL *fileURL = [NSURL fileURLWithPath:path];
+    
   __block NSString *assetId = nil;
+  NSURL *fileURL = [NSURL fileURLWithPath:path];
   [[PHPhotoLibrary sharedPhotoLibrary]
           performChanges:^{
-              PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:fileURL];
-//              PHAssetResourceCreationOptions *options = [PHAssetResourceCreationOptions new];
-//              [options setOriginalFilename:title];
-
-//              PHAssetCreationRequest *request = [PHAssetCreationRequest
-//                      creationRequestForAssetFromVideoAtFileURL:fileURL];
-//              PHAssetResourceCreationOptions *options =
-//                      [PHAssetResourceCreationOptions new];
-//              [options setOriginalFilename:title];
-//              [request addResourceWithType:PHAssetResourceTypeVideo
-//                                   fileURL:fileURL
-//                                   options:options];
+              PHAssetCreationRequest *request = [PHAssetCreationRequest creationRequestForAsset];
+              PHAssetResourceCreationOptions *options = [PHAssetResourceCreationOptions new];
+              [options setOriginalFilename:title];
+              [request addResourceWithType:PHAssetResourceTypeVideo
+                                   fileURL:fileURL
+                                   options:options];
               assetId = request.placeholderForCreatedAsset.localIdentifier;
           }
        completionHandler:^(BOOL success, NSError *error) {
+           [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
            if (success) {
              NSLog(@"create asset : id = %@", assetId);
              block([self getAssetEntity:assetId]);
