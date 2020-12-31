@@ -22,6 +22,8 @@
   PMCacheContainer *cacheContainer;
 
   PHCachingImageManager *cachingManager;
+    
+  NSMutableDictionary *cacheAssetSize;
 }
 
 - (instancetype)init {
@@ -30,6 +32,7 @@
     __isAuth = NO;
     cacheContainer = [PMCacheContainer new];
     cachingManager = [PHCachingImageManager new];
+    cacheAssetSize = [NSMutableDictionary dictionary];
   }
 
   return self;
@@ -1240,17 +1243,23 @@
 }
 
 - (long long)getAssetLength:(NSString *)assetId {
+    id cache = [cacheAssetSize valueForKey:assetId];
+    if (cache) {
+        return [cache longLongValue];
+    }
+    
     PHAsset *asset = [PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].firstObject;
     if (!asset) return 0;
     PHAssetResource *resource = [PHAssetResource assetResourcesForAsset:asset].firstObject;
     NSNumber *fileSize = [resource valueForKey:@"fileSize"];
+    [cacheAssetSize setValue:fileSize forKey:assetId];
     return [fileSize longLongValue];
 }
 
 - (void)calculateAssetSimilarity:(NSString *)assetIdA assetIdB:(NSString *)assetIdB resultHandler:(ResultHandler *)handler  {
     PMThumbLoadOption *option = [PMThumbLoadOption optionDict:@{
-        @"width": @(50),
-        @"height": @(50),
+        @"width": @(30),
+        @"height": @(30),
         @"format": @(0),
         @"quality": @(100),
         @"deliveryMode": @(2),
@@ -1270,7 +1279,10 @@
             FlutterStandardTypedData *dataB = (FlutterStandardTypedData *)resultB;
             UIImage *imageA = [[UIImage alloc] initWithData:dataA.data scale:1.f];
             UIImage *imageB = [[UIImage alloc] initWithData:dataB.data scale:1.f];
-            double similarity = [ImageSimilarity imageSimilarityValueWithImgA:imageA ImgB:imageB];
+            double similarity = [ImageSimilarity imageSimilarityValueWithImgA:imageA
+                                                                         ImgB:imageB
+                                                                       imgaId:assetIdA
+                                                                       imgbId:assetIdB];
             handler.result(@(similarity));
         }]];
     }]];

@@ -1,6 +1,6 @@
 #import "ImageSimilarity.h"
 
-#define ImgSizeA 10
+#define ImgSizeA 30
 #define ImgSizeB 100
 
 typedef enum workday {
@@ -14,10 +14,14 @@ typedef enum workday {
 @property (nonatomic,assign) Similarity similarity;
 @property (nonatomic,strong) UIImage *imga;
 @property (nonatomic,strong) UIImage *imgb;
+@property (nonatomic,strong) NSString *imgaId;
+@property (nonatomic,strong) NSString *imgbId;
 
 @end
 
 @implementation ImageSimilarity
+
+static NSMutableDictionary *_imageCharacteristics; //灰度值数组缓存容器
 
 - (instancetype)init
 {
@@ -25,36 +29,49 @@ typedef enum workday {
     if (self) {
         self.imga = [[UIImage alloc] init];
         self.imgb = [[UIImage alloc] init];
+        if (!_imageCharacteristics) {
+            _imageCharacteristics = [NSMutableDictionary dictionary];
+        }
     }
     return self;
 }
 
-- (void)setImgWithImgA:(UIImage*)imgA ImgB:(UIImage*)imgB
+- (void)setImgWithImgA:(UIImage *)imgA
+                  ImgB:(UIImage *)imgB
+                imgaId:(NSString *)imgaId
+                imgbId:(NSString *)imgbId
 {
     _imga = imgA;
     _imgb = imgB;
+    _imgaId = imgaId;
+    _imgbId = imgbId;
 }
 
-- (void)setImgAWidthImg:(UIImage*)img
+- (void)setImgAWidthImg:(UIImage *)img
 {
     self.imga = img;
 }
 
-- (void)setImgBWidthImg:(UIImage*)img
+- (void)setImgBWidthImg:(UIImage *)img
 {
     self.imgb = img;
 }
 
 - (Similarity)imageSimilarityValue
 {
-    self.similarity = MAX([self imageSimilarityValueWithType:SizeA], [self imageSimilarityValueWithType:SizeB]);
+    //self.similarity = MAX([self imageSimilarityValueWithType:SizeA], [self imageSimilarityValueWithType:SizeB]);
+    self.similarity = [self imageSimilarityValueWithType:SizeA];//(优化)暂不交叉对比取最大相似度，节省1/2计算时间
     return self.similarity;
 }
 
-+ (Similarity)imageSimilarityValueWithImgA:(UIImage *)imga ImgB:(UIImage *)imgb
+/// Id用于缓存该对象的指纹关联的唯一标识，避免重复计算增加耗时.
++ (Similarity)imageSimilarityValueWithImgA:(UIImage *)imga
+                                      ImgB:(UIImage *)imgb
+                                    imgaId:(NSString *)imgaId
+                                    imgbId:(NSString *)imgbId
 {
-    ImageSimilarity * imageSimilarity = [[ImageSimilarity alloc] init];
-    [imageSimilarity setImgWithImgA:imga ImgB:imgb];
+    ImageSimilarity *imageSimilarity = [[ImageSimilarity alloc] init];
+    [imageSimilarity setImgWithImgA:imga ImgB:imgb imgaId:imgaId imgbId:imgbId];
     return [imageSimilarity imageSimilarityValue];
 }
 
@@ -62,38 +79,68 @@ typedef enum workday {
 {
     int cursize = (type == SizeA ? ImgSizeA : ImgSizeB);
     int ArrSize = cursize * cursize + 1,a[ArrSize],b[ArrSize],i,j,grey,sum = 0;
-    CGSize size = {cursize,cursize};
-    UIImage * imga = [self reSizeImage:self.imga toSize:size];
-    UIImage * imgb = [self reSizeImage:self.imgb toSize:size]; //缩小图片尺寸
-
-    a[ArrSize] = 0;
-    b[ArrSize] = 0;
+    //CGSize size = {cursize,cursize};
+    //UIImage * imga = [self reSizeImage:self.imga toSize:size];
+    //UIImage * imgb = [self reSizeImage:self.imgb toSize:size]; //缩小图片尺寸
+    //(优化)暂不缩放图片，本项目在外部传入数据源时已通过缩放获取缩略图，避免重复操作耗时
+    
     CGPoint point;
-    for (i = 0 ; i < cursize; i++) { //计算a的灰度
-        for (j = 0; j < cursize; j++) {
-            point.x = i;
-            point.y = j;
-            grey = ToGrey([self UIcolorToRGB:[self colorAtPixel:point img:imga]]);
-            a[cursize * i + j] = grey;
-            a[ArrSize] += grey;
+    const int* cachedA = (const int*)((NSData *)[_imageCharacteristics valueForKey:_imgaId]).bytes;
+    const int* cachedB = (const int*)((NSData *)[_imageCharacteristics valueForKey:_imgbId]).bytes;
+    
+    if (NULL != cachedA) {
+        for (int i = 0; i < ArrSize; i++) {
+            a[i] = cachedA[i];
         }
-    }
-    a[ArrSize] /= (ArrSize - 1); //灰度平均值
-    for (i = 0 ; i < cursize; i++) { //计算b的灰度
-        for (j = 0; j < cursize; j++) {
-            point.x = i;
-            point.y = j;
-            grey = ToGrey([self UIcolorToRGB:[self colorAtPixel:point img:imgb]]);
-            b[cursize * i + j] = grey;
-            b[ArrSize] += grey;
+    } else {
+        a[ArrSize] = 0;
+        for (i = 0 ; i < cursize; i++) { //计算a的灰度
+            for (j = 0; j < cursize; j++) {
+                point.x = i;
+                point.y = j;
+                grey = ToGrey([self UIcolorToRGB:[self colorAtPixel:point img:self.imga]]);//(优化)[imga]暂不缩放以节省大约0.05s计算时间
+                a[cursize * i + j] = grey;
+                a[ArrSize] += grey;
+            }
         }
+        a[ArrSize] /= (ArrSize - 1); //灰度平均值
+        for (i = 0 ; i < ArrSize ; i++) //灰度分布计算
+        {
+            a[i] = (a[i] < a[ArrSize] ? 0 : 1);
+        }
+        
+        //缓存灰度值数组
+        NSData *valueA = [NSData dataWithBytes:a length:sizeof(int)*ArrSize];
+        [_imageCharacteristics setValue:valueA forKeyPath:_imgaId];
     }
-    b[ArrSize] /= (ArrSize - 1); //灰度平均值
-    for (i = 0 ; i < ArrSize ; i++) //灰度分布计算
-    {
-        a[i] = (a[i] < a[ArrSize] ? 0 : 1);
-        b[i] = (b[i] < b[ArrSize] ? 0 : 1);
+    
+    if (NULL != cachedB) {
+        for (int i = 0; i < ArrSize; i++) {
+            b[i] = cachedB[i];
+        }
+    } else {
+        b[ArrSize] = 0;
+        for (i = 0 ; i < cursize; i++) { //计算b的灰度
+            for (j = 0; j < cursize; j++) {
+                point.x = i;
+                point.y = j;
+                grey = ToGrey([self UIcolorToRGB:[self colorAtPixel:point img:self.imgb]]);//(优化)[imgb]暂不缩放以节省大约0.05s计算时间
+                b[cursize * i + j] = grey;
+                b[ArrSize] += grey;
+            }
+        }
+        b[ArrSize] /= (ArrSize - 1); //灰度平均值
+        for (i = 0 ; i < ArrSize ; i++) //灰度分布计算
+        {
+            b[i] = (b[i] < b[ArrSize] ? 0 : 1);
+        }
+        
+        //缓存灰度值数组
+        NSData *valueB = [NSData dataWithBytes:b length:sizeof(int)*ArrSize];
+        [_imageCharacteristics setValue:valueB forKeyPath:_imgbId];
     }
+    
+    // 汇总指纹对比数据
     ArrSize -= 1;
     for (i = 0 ; i < ArrSize ; i++)
     {
@@ -133,7 +180,7 @@ unsigned int ToGrey(unsigned int rgb) //RGB计算灰度
     return RGB;
 }
 
-- (UIColor *)colorAtPixel:(CGPoint)point img:(UIImage*)img{ //获取指定point位置的RGB
+- (UIColor *)colorAtPixel:(CGPoint)point img:(UIImage *)img{ //获取指定point位置的RGB
     // Cancel if point is outside image coordinates
     if (!CGRectContainsPoint(CGRectMake(0.0f, 0.0f, img.size.width, img.size.height), point)) { return nil; }
 
