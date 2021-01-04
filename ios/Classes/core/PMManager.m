@@ -1257,6 +1257,7 @@
 }
 
 - (void)calculateAssetSimilarity:(NSString *)assetIdA assetIdB:(NSString *)assetIdB resultHandler:(ResultHandler *)handler  {
+    //todo: 通过assetId缓存节约缩略图读取时间.
     PMThumbLoadOption *option = [PMThumbLoadOption optionDict:@{
         @"width": @(30),
         @"height": @(30),
